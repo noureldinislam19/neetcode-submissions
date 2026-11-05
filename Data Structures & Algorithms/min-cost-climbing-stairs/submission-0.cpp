@@ -1,0 +1,16 @@
+const int N = 1e5 + 5;
+class Solution {
+    long long dp[N];
+public:
+    int minCostClimbingStairs(vector<int>& cost) {
+    int n =cost.size();
+    for(int i = 0; i < N; i++) dp[i] = -1;
+    dp[0] = cost[0];
+    dp[1] = cost[1];
+
+    for(int i = 2; i < n; i++) {
+        dp[i] = cost[i] + min(dp[i-1],dp[i-2]) ;
+    }
+    return min(dp[n-1],dp[n-2]);
+    }
+};
